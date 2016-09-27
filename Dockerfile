@@ -19,6 +19,8 @@ ADD pictshare.conf /etc/nginx/sites-available/default
 ADD pictshare.conf /etc/nginx/sites-enabled/default
 
 RUN chown -R www-data:www-data /opt/pictshare
+RUN sed -i -e 's/2M/50M/g' /etc/php5/fpm/php.ini
+RUN sed -i -e 's/ 8M/ 50M/g' /etc/php5/fpm/php.ini
 
 EXPOSE 80
 

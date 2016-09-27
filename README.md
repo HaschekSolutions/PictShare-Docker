@@ -1,4 +1,7 @@
 # Official PictShare Docker image
+The fastest way to deploy PictShare
+
+[![Docker setup](http://www.pictshare.net/b65dea2117.gif)](https://www.pictshare.net/8a1dec0973.mp4)
 
 ## Starting
 docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pictshare hascheksolutions/pictshare

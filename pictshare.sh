@@ -58,9 +58,11 @@ fi
 if [ ${AUTOUPDATE}="true" ]; then
 		echo "[i] Updating installation"
 		cd /opt/
-		git clone https://github.com/chrisiaut/pictshare.git temp
-		cp -r temp/* pictshare/.
-		rm -rf temp
+		curl -O https://codeload.github.com/chrisiaut/pictshare/zip/master
+		unzip master
+		cp -r pictshare-master/* pictshare/.
+		rm -rf pictshare-master
+		rm master
 fi
 
 echo "<?php " > /opt/pictshare/inc/config.inc.php

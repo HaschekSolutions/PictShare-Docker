@@ -51,6 +51,17 @@ if [ -v ${SHOWERRORS} ]; then
 		SHOWERRORS="false"
 fi
 
+if [ -v ${AUTOUPDATE} ]; then
+		AUTOUPDATE="true"
+fi
+
+if [ ${AUTOUPDATE}="true" ]; then
+		echo "[i] Updating installation"
+		cd /opt/
+		git clone https://github.com/chrisiaut/pictshare.git temp
+		cp -r temp/* pictshare/.
+		rm -rf temp
+fi
 
 echo "<?php " > /opt/pictshare/inc/config.inc.php
 echo "define('TITLE', '${TITLE}');" >> /opt/pictshare/inc/config.inc.php
@@ -65,7 +76,6 @@ echo "define('ALLOW_BLOATING', ${BLOATING});" >> /opt/pictshare/inc/config.inc.p
 echo "define('FORCE_DOMAIN', '${DOMAIN}');" >> /opt/pictshare/inc/config.inc.php
 echo "define('SHOW_ERRORS', ${SHOWERRORS});" >> /opt/pictshare/inc/config.inc.php
 
-service php5-fpm start && nginx
+echo "[i] Done! Starting nginx"
 
-touch /var/log/nginx/access.log
-tail -f /var/log/nginx/access.log
+service php5-fpm start && nginx

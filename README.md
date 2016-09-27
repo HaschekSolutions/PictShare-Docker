@@ -1,6 +1,8 @@
 # Official PictShare Docker image
 The fastest way to deploy PictShare
 
+It automatically updates on start unless you supply the env variable AUTOUPDATE=false
+
 [![Docker setup](http://www.pictshare.net/b65dea2117.gif)](https://www.pictshare.net/8a1dec0973.mp4)
 
 ## Starting
@@ -18,3 +20,4 @@ docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pi
 - MAXRESIZEDIMAGES (int | how many versions of a single image may exist? -1 for infinite)
 - DOMAIN (string | force all URLs to domain)
 - SHOWERRORS (true/false | show upload/size/server errors?)
+- AUTOUPDATE (true/false | should the container upgrade on every start)

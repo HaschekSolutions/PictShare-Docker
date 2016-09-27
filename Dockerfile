@@ -20,14 +20,11 @@ ADD pictshare.conf /etc/nginx/sites-enabled/default
 
 RUN chown -R www-data:www-data /opt/pictshare
 
-
 EXPOSE 80
 
 VOLUME /opt/pictshare/upload
 
 ADD pictshare.sh /opt/
 RUN chmod +x /opt/pictshare.sh
-
-#CMD service php5-fpm start && nginx
 
 ENTRYPOINT ["/opt/pictshare.sh"]

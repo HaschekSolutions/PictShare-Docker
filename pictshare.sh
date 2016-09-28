@@ -53,10 +53,15 @@ fi
 
 re='^[0-9]+$'
 if [[ $MAXUPLOADSIZE =~ $re ]]; then
-	echo "Setting uploadsize to ${MAXUPLOADSIZE}"
+		echo "[i] Setting uploadsize to ${MAXUPLOADSIZE}"
 		sed -i -e "s/50M/${MAXUPLOADSIZE}M/g" /etc/php5/fpm/php.ini
 		sed -i -e "s/50M/${MAXUPLOADSIZE}M/g" /etc/nginx/sites-available/default
 		sed -i -e "s/50M/${MAXUPLOADSIZE}M/g" /etc/nginx/sites-enabled/default
+	
+		MAXRAM=$(($MAXUPLOADSIZE + 30)) #30megs more than the upload size
+		sed -i -e "s/128M/${MAXRAM}M/g" /etc/php5/fpm/php.ini
+		echo "[i] Also changing memory limit of PHP to ${MAXRAM}"
+		
 fi
 
 if [ -v ${AUTOUPDATE} ]; then

@@ -5,8 +5,19 @@ It automatically updates on start unless you supply the env variable AUTOUPDATE=
 
 [![Docker setup](http://www.pictshare.net/b65dea2117.gif)](https://www.pictshare.net/8a1dec0973.mp4)
 
-## Starting
+## Usage
+### Quick start
+```bash
+docker run -d -p 80:80 --name=pictshare hascheksolutions/pictshare
+```
+
+### Persistent data
+```bash
+mkdir /data/pictshareuploads
+chown 1000 -R /data/pictshareuploads
 docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pictshare hascheksolutions/pictshare
+```
+
 
 ## ENV Variables
 - TITLE (string | Title of the page)

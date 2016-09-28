@@ -18,7 +18,7 @@ chown 1000 -R /data/pictshareuploads
 docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pictshare hascheksolutions/pictshare
 ```
 
-### Persistent data and uploadsize increased max upload size
+### Persistent data with increased max upload size
 ```bash
 mkdir /data/pictshareuploads
 chown 1000 -R /data/pictshareuploads

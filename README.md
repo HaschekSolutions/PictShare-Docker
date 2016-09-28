@@ -21,6 +21,7 @@ docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pi
 
 ## ENV Variables
 - TITLE (string | Title of the page)
+- AUTOUPDATE (true/false | should the container upgrade on every start? default: true)
 - MASTERDELETECODE (string | code if added to any url, will delete the image)
 - BLOATING (true/false | can images be bloated to higher resolutions than the originals)
 - UPLOADCODE (string | code that has to be supplied to upload an image)
@@ -31,4 +32,3 @@ docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pi
 - MAXRESIZEDIMAGES (int | how many versions of a single image may exist? -1 for infinite)
 - DOMAIN (string | force all URLs to domain)
 - SHOWERRORS (true/false | show upload/size/server errors?)
-- AUTOUPDATE (true/false | should the container upgrade on every start)

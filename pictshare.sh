@@ -51,6 +51,12 @@ if [ -v ${SHOWERRORS} ]; then
 		SHOWERRORS="false"
 fi
 
+if [ -n ${MAXUPLOADSIZE} ]; then
+		sed -i -e "s/50M/${MAXUPLOADSIZE}M/g" /etc/php5/fpm/php.ini
+		sed -i -e "s/50M/${MAXUPLOADSIZE}M/g" /etc/nginx/sites-available/default
+		sed -i -e "s/50M/${MAXUPLOADSIZE}M/g" /etc/nginx/sites-enabled/default
+fi
+
 if [ -v ${AUTOUPDATE} ]; then
 		AUTOUPDATE="true"
 fi

@@ -22,6 +22,7 @@ docker run -d -v /data/pictshareuploads:/opt/pictshare/upload -p 80:80 --name=pi
 ## ENV Variables
 - TITLE (string | Title of the page)
 - AUTOUPDATE (true/false | should the container upgrade on every start? default: true)
+- MAXUPLOADSIZE (int | size in MB that will be used for nginx. default 50)
 - MASTERDELETECODE (string | code if added to any url, will delete the image)
 - BLOATING (true/false | can images be bloated to higher resolutions than the originals)
 - UPLOADCODE (string | code that has to be supplied to upload an image)

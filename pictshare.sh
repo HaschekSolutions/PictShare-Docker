@@ -51,6 +51,14 @@ if [ -v ${SHOWERRORS} ]; then
 		SHOWERRORS="false"
 fi
 
+if [ -v ${PNGCOMPRESSION} ]; then
+		PNGCOMPRESSION="6"
+fi
+
+if [ -v ${JPEGCOMPRESSION} ]; then
+		JPEGCOMPRESSION="90"
+fi
+
 re='^[0-9]+$'
 if [[ $MAXUPLOADSIZE =~ $re ]]; then
 		echo "[i] Setting uploadsize to ${MAXUPLOADSIZE}"
@@ -90,6 +98,8 @@ echo "define('MAX_RESIZED_IMAGES',${MAXRESIZEDIMAGES});" >> /opt/pictshare/inc/c
 echo "define('ALLOW_BLOATING', ${BLOATING});" >> /opt/pictshare/inc/config.inc.php
 echo "define('FORCE_DOMAIN', '${DOMAIN}');" >> /opt/pictshare/inc/config.inc.php
 echo "define('SHOW_ERRORS', ${SHOWERRORS});" >> /opt/pictshare/inc/config.inc.php
+echo "define('JPEG_COMPRESSION', ${JPEGCOMPRESSION});" >> /opt/pictshare/inc/config.inc.php
+echo "define('PNG_COMPRESSION', ${PNGCOMPRESSION});" >> /opt/pictshare/inc/config.inc.php
 
 echo "[i] Done! Starting nginx"
 

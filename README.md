@@ -1,5 +1,5 @@
 # Official PictShare Docker image
-The fastest way to deploy PictShare
+The fastest way to deploy [PictShare](https://www.pictshare.net)
 
 It automatically updates on start unless you supply the env variable AUTOUPDATE=false
 
@@ -28,6 +28,8 @@ docker run -d -e "MAXUPLOADSIZE=1024" -v /data/pictshareuploads:/opt/pictshare/u
 
 ## ENV Variables
 - TITLE (string | Title of the page)
+- PNGCOMPRESSION (int | 0-9 how much compression is used. note that this never affects quality. default: 6)
+- JPEGCOMPRESSION (int | 0-100 how high should the quality be? More is better. default: 90)
 - AUTOUPDATE (true/false | should the container upgrade on every start? default: true)
 - MAXUPLOADSIZE (int | size in MB that will be used for nginx. default 50)
 - MASTERDELETECODE (string | code if added to any url, will delete the image)

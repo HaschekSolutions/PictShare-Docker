@@ -76,7 +76,7 @@ if [ -v ${AUTOUPDATE} ]; then
 		AUTOUPDATE="true"
 fi
 
-if [ ${AUTOUPDATE}="true" ]; then
+if [ ${AUTOUPDATE} = "true" ]; then
 		echo "[i] Updating installation"
 		cd /opt/
 		curl -O https://codeload.github.com/chrisiaut/pictshare/zip/master

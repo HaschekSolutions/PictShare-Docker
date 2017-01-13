@@ -1,4 +1,4 @@
-# Official PictShare Docker image
+# Official PictShare Docker image - Now based on Alpine Linux and PHP 7
 The fastest way to deploy [PictShare](https://www.pictshare.net)
 
 It automatically updates on start unless you supply the env variable AUTOUPDATE=false

@@ -1,32 +1,61 @@
-FROM ishakuta/docker-nginx-php5
-MAINTAINER Christian Haschek <christian@haschek.at>
+FROM shito/alpine-nginx:edge
+MAINTAINER Christian Haschek <office@haschek-solutions.com>
 
-RUN apt-get update && apt-get install -y php5-gd
+# Add PHP 7
+RUN apk upgrade -U && \
+    apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
+    openssl \
+    ffmpeg \
+    unzip \
+    php7 \
+    php7-pdo \
+    php7-mcrypt \
+    php7-curl \
+    php7-gd \
+    php7-json \
+    php7-fpm \
+    php7-openssl \
+    php7-ctype \
+    php7-opcache \
+    php7-mbstring \
+    php7-session \
+    php7-pcntl
 
-WORKDIR /opt
+COPY /rootfs /
+
+# Small fixes
+RUN ln -s /etc/php7 /etc/php && \
+    ln -s /usr/bin/php7 /usr/bin/php && \
+    ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
+    ln -s /usr/lib/php7 /usr/lib/php && \
+    rm -fr /var/cache/apk/*
+
+# Install composer global bin
+#RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+
+# Enable default sessions
+RUN mkdir -p /var/lib/php7/sessions
+RUN chown nginx:nginx /var/lib/php7/sessions
+
+# ADD SOURCE
+RUN mkdir -p /usr/share/nginx/html
+RUN chown -Rf nginx:nginx /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/html
 RUN curl -O https://codeload.github.com/chrisiaut/pictshare/zip/master
-
-RUN apt-get install -y unzip
 RUN unzip master
-RUN mv pictshare-master pictshare && rm master
+RUN mv pictshare-master/* . && rm master
 
-RUN apt-get install -y php5-fpm
+VOLUME /usr/share/nginx/html/upload
 
-WORKDIR /opt/pictshare
 RUN chmod +x bin/ffmpeg
 
-ADD pictshare.conf /etc/nginx/sites-available/default
-ADD pictshare.conf /etc/nginx/sites-enabled/default
+RUN mv inc/example.config.inc.php inc/config.inc.php
 
-RUN chown -R www-data:www-data /opt/pictshare
-RUN sed -i -e 's/2M/50M/g' /etc/php5/fpm/php.ini
-RUN sed -i -e 's/ 8M/ 50M/g' /etc/php5/fpm/php.ini
+
+RUN chown -Rf nginx:nginx /usr/share/nginx/html
+RUN chmod -R 777 /usr/share/nginx/html/
 
 EXPOSE 80
 
-VOLUME /opt/pictshare/upload
-
-ADD pictshare.sh /opt/
-RUN chmod +x /opt/pictshare.sh
-
-ENTRYPOINT ["/opt/pictshare.sh"]
+ENTRYPOINT ["/etc/pictshare.sh"]

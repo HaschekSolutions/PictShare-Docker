@@ -46,7 +46,7 @@ RUN chown -Rf nginx:nginx /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 RUN curl -O https://codeload.github.com/chrisiaut/pictshare/zip/master
 RUN unzip master
-RUN mv pictshare-master/* . && rm master
+RUN mv pictshare-master/* . && rm master && rm -r pictshare-master
 
 VOLUME /usr/share/nginx/html/upload
 

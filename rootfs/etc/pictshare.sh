@@ -80,7 +80,7 @@ if [ ${AUTOUPDATE} = "true" ]; then
 		cd /usr/share/nginx/html
 		curl -O https://codeload.github.com/chrisiaut/pictshare/zip/master
 		unzip master
-		yes | cp -rf pictshare-master/* .
+		cp -rf pictshare-master/* .
 		rm -rf pictshare-master
 		rm master
 fi

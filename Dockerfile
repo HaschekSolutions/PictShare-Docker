@@ -57,6 +57,7 @@ RUN mv inc/example.config.inc.php inc/config.inc.php
 
 RUN chown -Rf nginx:nginx /usr/share/nginx/html
 RUN chmod -R 777 /usr/share/nginx/html/
+RUN chmod 777 /etc/pictshare.sh
 
 EXPOSE 80
 

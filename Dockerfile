@@ -25,10 +25,11 @@ RUN apk upgrade -U && \
 COPY /rootfs /
 
 # Small fixes
-RUN ln -s /etc/php7 /etc/php && \
+RUN rm /usr/bin/php && \
+    ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
-    #ln -s /usr/lib/php7 /usr/lib/php && \
+    ln -s /usr/lib/php7 /usr/lib/php && \
     rm -fr /var/cache/apk/*
 
 # Install composer global bin

@@ -19,6 +19,7 @@ RUN apk upgrade -U && \
     php7-opcache \
     php7-mbstring \
     php7-session \
+    php7-fileinfo \
     php7-pcntl
 
 COPY /rootfs /
@@ -27,7 +28,7 @@ COPY /rootfs /
 RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
-    ln -s /usr/lib/php7 /usr/lib/php && \
+    #ln -s /usr/lib/php7 /usr/lib/php && \
     rm -fr /var/cache/apk/*
 
 # Install composer global bin

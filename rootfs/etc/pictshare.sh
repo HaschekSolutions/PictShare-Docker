@@ -59,6 +59,10 @@ if [ -v ${JPEGCOMPRESSION} ]; then
 		JPEGCOMPRESSION="90"
 fi
 
+if [ -v ${MAXUPLOADSIZE} ]; then
+		MAXUPLOADSIZE="100"
+fi
+
 re='^[0-9]+$'
 if [[ $MAXUPLOADSIZE =~ $re ]]; then
 		echo "[i] Setting uploadsize to ${MAXUPLOADSIZE}"

@@ -20,7 +20,8 @@ RUN apk upgrade -U && \
     php7-mbstring \
     php7-session \
     php7-fileinfo \
-    php7-pcntl
+    php7-pcntl \
+    file
 
 COPY /rootfs /
 

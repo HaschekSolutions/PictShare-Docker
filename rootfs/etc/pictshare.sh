@@ -79,6 +79,10 @@ if [ -v ${AUTOUPDATE} ]; then
 		AUTOUPDATE="true"
 fi
 
+if [ -v ${BACKBLAZE} ]; then
+		BACKBLAZE="false"
+fi
+
 if [ ${AUTOUPDATE} = "true" ]; then
 		echo "[i] Updating installation"
 		cd /usr/share/nginx/html
@@ -107,14 +111,13 @@ echo "define('SHOW_ERRORS', ${SHOWERRORS});" >> /usr/share/nginx/html/inc/config
 echo "define('JPEG_COMPRESSION', ${JPEGCOMPRESSION});" >> /usr/share/nginx/html/inc/config.inc.php
 echo "define('PNG_COMPRESSION', ${PNGCOMPRESSION});" >> /usr/share/nginx/html/inc/config.inc.php
 
-if [ ${BACKBLAZE} = "true" ]; then
-		MAXUPLOADSIZE="100"
+if [ ${BACKBLAZE} = true ]; then
 
 	echo "define('BACKBLAZE', ${BACKBLAZE});" >> /usr/share/nginx/html/inc/config.inc.php
-	echo "define('FORCE_DOMAIN', '${BACKBLAZE_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
-	echo "define('FORCE_DOMAIN', '${BACKBLAZE_KEY}');" >> /usr/share/nginx/html/inc/config.inc.php
-	echo "define('FORCE_DOMAIN', '${BACKBLAZE_BUCKET_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
-	echo "define('FORCE_DOMAIN', '${BACKBLAZE_BUCKET_NAME}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_ID', '${BACKBLAZE_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_KEY', '${BACKBLAZE_KEY}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_BUCKET_ID', '${BACKBLAZE_BUCKET_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_BUCKET_NAME', '${BACKBLAZE_BUCKET_NAME}');" >> /usr/share/nginx/html/inc/config.inc.php
 fi
 
 echo "[i] Done! Starting nginx"

@@ -25,6 +25,10 @@ chown 1000 -R /data/pictshareuploads
 docker run -d -e "MAXUPLOADSIZE=1024" -v /data/pictshareuploads:/usr/share/nginx/html/upload -p 80:80 --name=pictshare hascheksolutions/pictshare
 ```
 
+### Scale PictShare by using Backblaze buckets for persistent storage
+```bash
+docker run -e "BACKBLAZE=true" -e "BACKBLAZE_ID=yourIDhere" -e "BACKBLAZE_KEY=yourKEYhere" -e "BACKBLAZE_BUCKET_ID=yourbucketIDhere" -e "BACKBLAZE_BUCKET_NAME=yourbucketNAMEhere" -d -p 80:80 hascheksolutions/pictshare
+```
 
 ## ENV Variables
 - TITLE (string | Title of the page)

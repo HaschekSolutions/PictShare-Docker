@@ -42,3 +42,8 @@ docker run -d -e "MAXUPLOADSIZE=1024" -v /data/pictshareuploads:/usr/share/nginx
 - MAXRESIZEDIMAGES (int | how many versions of a single image may exist? -1 for infinite)
 - DOMAIN (string | force all URLs to domain)
 - SHOWERRORS (true/false | show upload/size/server errors?)
+- BACKBLAZE (true/false | Enable backblaze B2 support)
+- BACKBLAZE_ID (Your Backblaze User ID)
+- BACKBLAZE_KEY (Your Backblaze API Key)
+- BACKBLAZE_BUCKET_ID (Bucket ID)
+- BACKBLAZE_BUCKET_NAME (The name of the bucket - must be same as on backblaze)

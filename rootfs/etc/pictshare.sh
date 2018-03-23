@@ -107,6 +107,16 @@ echo "define('SHOW_ERRORS', ${SHOWERRORS});" >> /usr/share/nginx/html/inc/config
 echo "define('JPEG_COMPRESSION', ${JPEGCOMPRESSION});" >> /usr/share/nginx/html/inc/config.inc.php
 echo "define('PNG_COMPRESSION', ${PNGCOMPRESSION});" >> /usr/share/nginx/html/inc/config.inc.php
 
+if [ ${BACKBLAZE} = "true" ]; then
+		MAXUPLOADSIZE="100"
+
+	echo "define('BACKBLAZE', ${BACKBLAZE});" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('FORCE_DOMAIN', '${BACKBLAZE_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('FORCE_DOMAIN', '${BACKBLAZE_KEY}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('FORCE_DOMAIN', '${BACKBLAZE_BUCKET_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('FORCE_DOMAIN', '${BACKBLAZE_BUCKET_NAME}');" >> /usr/share/nginx/html/inc/config.inc.php
+fi
+
 echo "[i] Done! Starting nginx"
 
 /init

@@ -6,6 +6,12 @@ It automatically updates on start unless you supply the env variable AUTOUPDATE=
 [![Docker setup](http://www.pictshare.net/b65dea2117.gif)](https://www.pictshare.net/8a1dec0973.mp4)
 
 ## Usage
+
+### Building it
+```bash
+docker build -t hascheksolutions/pictshare .
+```
+
 ### Quick start
 ```bash
 docker run -d -p 80:80 --name=pictshare hascheksolutions/pictshare
@@ -51,3 +57,6 @@ docker run -e "BACKBLAZE=true" -e "BACKBLAZE_ID=yourIDhere" -e "BACKBLAZE_KEY=yo
 - BACKBLAZE_KEY (Your Backblaze API Key)
 - BACKBLAZE_BUCKET_ID (Bucket ID)
 - BACKBLAZE_BUCKET_NAME (The name of the bucket - must be same as on backblaze)
+- BACKBLAZE_AUTODOWNLOAD (Should images be downloaded from backblaze if they don't exist locally?)
+- BACKBLAZE_AUTOUPLOAD (Should newly uploaded images be uploaded  to backblaze?)
+- BACKBLAZE_AUTOUPDELETE (Should images be deleted form backblaze if they are deleted on pictshare?)

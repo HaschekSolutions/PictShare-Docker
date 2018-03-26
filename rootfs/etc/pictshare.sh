@@ -83,6 +83,18 @@ if [ -v ${BACKBLAZE} ]; then
 		BACKBLAZE="false"
 fi
 
+if [ -v ${BACKBLAZE_AUTODOWNLOAD} ]; then
+		BACKBLAZE_AUTODOWNLOAD="true"
+fi
+
+if [ -v ${BACKBLAZE_AUTOUPLOAD} ]; then
+		BACKBLAZE_AUTOUPLOAD="true"
+fi
+
+if [ -v ${BACKBLAZE_AUTOUPDELETE} ]; then
+		BACKBLAZE_AUTOUPDELETE="true"
+fi
+
 if [ ${AUTOUPDATE} = "true" ]; then
 		echo "[i] Updating installation"
 		cd /usr/share/nginx/html
@@ -118,6 +130,9 @@ if [ ${BACKBLAZE} = true ]; then
 	echo "define('BACKBLAZE_KEY', '${BACKBLAZE_KEY}');" >> /usr/share/nginx/html/inc/config.inc.php
 	echo "define('BACKBLAZE_BUCKET_ID', '${BACKBLAZE_BUCKET_ID}');" >> /usr/share/nginx/html/inc/config.inc.php
 	echo "define('BACKBLAZE_BUCKET_NAME', '${BACKBLAZE_BUCKET_NAME}');" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_AUTODOWNLOAD', ${BACKBLAZE_AUTODOWNLOAD});" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_AUTOUPLOAD', ${BACKBLAZE_AUTOUPLOAD});" >> /usr/share/nginx/html/inc/config.inc.php
+	echo "define('BACKBLAZE_AUTOUPDELETE', ${BACKBLAZE_AUTOUPDELETE});" >> /usr/share/nginx/html/inc/config.inc.php
 fi
 
 echo "[i] Done! Starting nginx"

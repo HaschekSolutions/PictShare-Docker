@@ -59,4 +59,4 @@ docker run -e "BACKBLAZE=true" -e "BACKBLAZE_ID=yourIDhere" -e "BACKBLAZE_KEY=yo
 - BACKBLAZE_BUCKET_NAME (The name of the bucket - must be same as on backblaze)
 - BACKBLAZE_AUTODOWNLOAD (Should images be downloaded from backblaze if they don't exist locally?)
 - BACKBLAZE_AUTOUPLOAD (Should newly uploaded images be uploaded  to backblaze?)
-- BACKBLAZE_AUTOUPDELETE (Should images be deleted form backblaze if they are deleted on pictshare?)
+- BACKBLAZE_AUTODELETE (Should images be deleted form backblaze if they are deleted on pictshare?)

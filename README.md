@@ -60,3 +60,4 @@ docker run -e "BACKBLAZE=true" -e "BACKBLAZE_ID=yourIDhere" -e "BACKBLAZE_KEY=yo
 - BACKBLAZE_AUTODOWNLOAD (Should images be downloaded from backblaze if they don't exist locally?)
 - BACKBLAZE_AUTOUPLOAD (Should newly uploaded images be uploaded  to backblaze?)
 - BACKBLAZE_AUTODELETE (Should images be deleted form backblaze if they are deleted on pictshare?)
+- ALT_FOLDER (path to a folder where all hashes will be copied to and looked for offsite backup via nfs for example)

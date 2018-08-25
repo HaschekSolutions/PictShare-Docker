@@ -126,7 +126,7 @@ echo "define('FORCE_DOMAIN', '${DOMAIN}');" >> /usr/share/nginx/html/inc/config.
 echo "define('SHOW_ERRORS', ${SHOWERRORS});" >> /usr/share/nginx/html/inc/config.inc.php
 echo "define('JPEG_COMPRESSION', ${JPEGCOMPRESSION});" >> /usr/share/nginx/html/inc/config.inc.php
 echo "define('PNG_COMPRESSION', ${PNGCOMPRESSION});" >> /usr/share/nginx/html/inc/config.inc.php
-echo "define('ALT_FOLDER', ${ALT_FOLDER});" >> /usr/share/nginx/html/inc/config.inc.php
+echo "define('ALT_FOLDER', '${ALT_FOLDER}');" >> /usr/share/nginx/html/inc/config.inc.php
 
 if [ ${BACKBLAZE} = true ]; then
 

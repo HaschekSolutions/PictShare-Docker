@@ -35,7 +35,7 @@ _filePermissions() {
 
 _buildConfig() {
     echo "<?php"
-    echo "define('TITLE', '${TITLE:-Pictshare}');"
+    echo "define('TITLE', '${TITLE:-PictShare}');"
     echo "define('MASTER_DELETE_CODE', '${MASTER_DELETE_CODE:-}');"
     echo "define('MASTER_DELETE_IP', '${MASTER_DELETE_IP:-}');"
     echo "define('UPLOAD_FORM_LOCATION', '${UPLOAD_FORM_LOCATION:-}');"

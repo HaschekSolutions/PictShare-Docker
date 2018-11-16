@@ -34,6 +34,7 @@ _filePermissions() {
 }
 
 _buildConfig() {
+    echo "<?php"
     echo "define('TITLE', '${TITLE:-Pictshare}');"
     echo "define('MASTER_DELETE_CODE', '${MASTER_DELETE_CODE:-}');"
     echo "define('MASTER_DELETE_IP', '${MASTER_DELETE_IP:-}');"

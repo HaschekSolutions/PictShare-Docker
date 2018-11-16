@@ -32,7 +32,11 @@ RUN set -x \
     && ln -s /etc/php7 /etc/php \
     && ln -s /usr/bin/php7 /usr/bin/php \
     && ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm \
-    && ln -s /usr/lib/php7 /usr/lib/php
+    && ln -s /usr/lib/php7 /usr/lib/php \
+    && ln -s /dev/stdout /var/log/nginx/access.log \
+    && ln -s /dev/stderr /var/log/nginx/error.log \
+    && mkdir -p /var/log/php-fpm \
+    && ln -s /dev/stderr /var/log/php-fpm/fpm-error.log
 
 # Enable default sessions
 RUN set -x \

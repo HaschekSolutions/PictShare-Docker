@@ -2,64 +2,64 @@ FROM shito/alpine-nginx:edge
 MAINTAINER Christian Haschek <office@haschek-solutions.com>
 
 # Add PHP 7
-RUN apk upgrade -U && \
-    apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
-    openssl \
-    ffmpeg \
-    unzip \
-    php7 \
-    php7-pdo \
-    php7-mcrypt \
-    php7-curl \
-    php7-gd \
-    php7-json \
-    php7-fpm \
-    php7-openssl \
-    php7-ctype \
-    php7-opcache \
-    php7-mbstring \
-    php7-session \
-    php7-fileinfo \
-    php7-pcntl \
-    file
+RUN set -x \
+    && apk upgrade -U \
+    && apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
+        openssl \
+        ffmpeg \
+        unzip \
+        php7 \
+        php7-pdo \
+        php7-mcrypt \
+        php7-curl \
+        php7-gd \
+        php7-json \
+        php7-fpm \
+        php7-openssl \
+        php7-ctype \
+        php7-opcache \
+        php7-mbstring \
+        php7-session \
+        php7-fileinfo \
+        php7-pcntl \
+        file \
+    && rm -rf /var/cache/apk/*
 
 COPY /rootfs /
 
-# Small fixes
-RUN rm /usr/bin/php && \
-    ln -s /etc/php7 /etc/php && \
-    ln -s /usr/bin/php7 /usr/bin/php && \
-    ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
-    ln -s /usr/lib/php7 /usr/lib/php && \
-    rm -fr /var/cache/apk/*
-
-# Install composer global bin
-#RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN set -x \
+    && rm /usr/bin/php \
+    && ln -s /etc/php7 /etc/php \
+    && ln -s /usr/bin/php7 /usr/bin/php \
+    && ln -s /usr/sbin/php-fpm7 /usr/bin/php-fpm \
+    && ln -s /usr/lib/php7 /usr/lib/php \
+    && ln -s /dev/stdout /var/log/nginx/access.log \
+    && ln -s /dev/stderr /var/log/nginx/error.log \
+    && mkdir -p /var/log/php-fpm \
+    && ln -s /dev/stderr /var/log/php-fpm/fpm-error.log
 
 # Enable default sessions
-RUN mkdir -p /var/lib/php7/sessions
-RUN chown nginx:nginx /var/lib/php7/sessions
+RUN set -x \
+    && mkdir -p /var/lib/php7/sessions \
+    && chown nginx:nginx /var/lib/php7/sessions
 
 # ADD SOURCE
-RUN mkdir -p /usr/share/nginx/html
-RUN chown -Rf nginx:nginx /usr/share/nginx/html
+RUN set -x \
+    && mkdir -p /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
-RUN curl -O https://codeload.github.com/chrisiaut/pictshare/zip/master
-RUN unzip master
-RUN mv pictshare-master/* . && rm master && rm -r pictshare-master
+
+RUN set -x \
+    && curl --silent --remote-name https://codeload.github.com/chrisiaut/pictshare/zip/master \
+    && unzip -q master \
+    && mv pictshare-master/* . \
+    && rm -r master pictshare-master \
+    && mv inc/example.config.inc.php inc/config.inc.php \
+    && chown -R nginx:nginx /usr/share/nginx/html \
+    && chmod +x bin/ffmpeg
 
 VOLUME /usr/share/nginx/html/upload
 
-RUN chmod +x bin/ffmpeg
-
-RUN mv inc/example.config.inc.php inc/config.inc.php
-
-
-RUN chown -Rf nginx:nginx /usr/share/nginx/html
-RUN chmod -R 777 /usr/share/nginx/html/
-RUN chmod 777 /etc/pictshare.sh
-
 EXPOSE 80
 
-ENTRYPOINT ["/etc/pictshare.sh"]
+ENTRYPOINT ["bash", "/pictshare.sh"]

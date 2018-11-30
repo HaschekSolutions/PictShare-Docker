@@ -58,6 +58,7 @@ _buildConfig() {
     echo "define('BACKBLAZE_AUTODOWNLOAD', ${BACKBLAZE_AUTODOWNLOAD:-true});"
     echo "define('BACKBLAZE_AUTOUPLOAD', ${BACKBLAZE_AUTOUPLOAD:-true});"
     echo "define('BACKBLAZE_AUTODELETE', ${BACKBLAZE_AUTODELETE:-true});"
+    echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-}');"
 }
 
 _main() {

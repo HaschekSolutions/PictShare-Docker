@@ -6,10 +6,12 @@ RUN set -x \
     && apk upgrade -U \
     && apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
         openssl \
+        nano \
         ffmpeg \
         unzip \
         php7 \
         php7-pdo \
+        php7-exif \
         php7-mcrypt \
         php7-curl \
         php7-gd \
@@ -50,7 +52,7 @@ RUN set -x \
 WORKDIR /usr/share/nginx/html
 
 RUN set -x \
-    && curl --silent --remote-name https://codeload.github.com/chrisiaut/pictshare/zip/master \
+    && curl --silent --remote-name https://codeload.github.com/HaschekSolutions/pictshare/zip/master \
     && unzip -q master \
     && mv pictshare-master/* . \
     && rm -r master pictshare-master \
@@ -58,7 +60,7 @@ RUN set -x \
     && chown -R nginx:nginx /usr/share/nginx/html \
     && chmod +x bin/ffmpeg
 
-VOLUME /usr/share/nginx/html/upload
+VOLUME /usr/share/nginx/html/data
 
 EXPOSE 80
 

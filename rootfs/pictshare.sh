@@ -23,7 +23,10 @@ _update() {
 }
 
 _filePermissions() {
+    touch /usr/share/nginx/html/data/sha1.csv
     chown -R nginx:nginx /usr/share/nginx/html
+    chmod -R 777 /usr/share/nginx/html/data
+    chmod -R 777 /usr/share/nginx/html/tmp
 }
 
 _buildConfig() {
@@ -60,6 +63,8 @@ _main() {
     fi
 
     _buildConfig > inc/config.inc.php
+
+    _filePermissions
 
     echo '[i] Done! Starting nginx'
 

@@ -12,6 +12,7 @@ RUN set -x \
         openssl \
         nano \
         ffmpeg \
+        file \
         unzip \
         bash \
         curl \

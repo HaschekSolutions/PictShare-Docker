@@ -41,7 +41,11 @@ _buildConfig() {
     echo "define('JPEG_COMPRESSION', ${JPEG_COMPRESSION:-90});"
     echo "define('PNG_COMPRESSION', ${PNG_COMPRESSION:-6});"
     echo "define('ALT_FOLDER', '${ALT_FOLDER:-}');"
-    echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/share/nginx/html/bin/ffmpeg}');"
+    if [[ "$(uname -m)" = "x86_64" ]]; then
+        echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/share/nginx/html/bin/ffmpeg}');"
+    else
+        echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/bin/ffmpeg}');"
+    fi
 }
 
 _main() {
@@ -60,6 +64,9 @@ _main() {
     echo '[i] Done! Starting nginx'
 
     exec /init
+# use if run without S6
+#    exec php-fpm &
+#    exec nginx -g 'daemon off;'
 }
 
 if [[ $0 = $BASH_SOURCE ]]; then

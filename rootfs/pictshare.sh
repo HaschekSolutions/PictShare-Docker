@@ -41,6 +41,7 @@ _buildConfig() {
     echo "define('JPEG_COMPRESSION', ${JPEG_COMPRESSION:-90});"
     echo "define('PNG_COMPRESSION', ${PNG_COMPRESSION:-6});"
     echo "define('ALT_FOLDER', '${ALT_FOLDER:-}');"
+    echo "define('ALLOWED_SUBNET', '${ALLOWED_SUBNET:-}');"
     if [[ "$(uname -m)" = "x86_64" ]]; then
         echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/share/nginx/html/bin/ffmpeg}');"
     else

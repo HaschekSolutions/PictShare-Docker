@@ -52,3 +52,4 @@ Every other variable can be referenced against the [default PictShare configurat
 - MAX_RESIZED_IMAGES (int | how many versions of a single image may exist? -1 for infinite)
 - SHOW_ERRORS (true/false | show upload/size/server errors?)
 - ALT_FOLDER (path to a folder where all hashes will be copied to and looked for offsite backup via nfs for example)
+- ALLOWED_SUBNET (If set, will only show the upload form and allow to upload via API if request is coming from this subnet)

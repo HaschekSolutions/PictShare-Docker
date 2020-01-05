@@ -51,6 +51,9 @@ _buildConfig() {
 _main() {
     echo 'Setting up PictShare'
 
+    touch /usr/share/nginx/html/data/sha1.csv
+    chown nginx:nginx /usr/share/nginx/html/data/sha1.csv
+
     if [[ ${MAX_UPLOAD_SIZE:=100} =~ ^[0-9]+$ ]]; then
         _maxUploadSize
     fi
@@ -64,9 +67,6 @@ _main() {
     echo '[i] Done! Starting nginx'
 
     exec /init
-# use if run without S6
-#    exec php-fpm &
-#    exec nginx -g 'daemon off;'
 }
 
 if [[ $0 = $BASH_SOURCE ]]; then

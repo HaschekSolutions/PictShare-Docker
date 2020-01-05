@@ -41,6 +41,10 @@ _buildConfig() {
     echo "define('JPEG_COMPRESSION', ${JPEG_COMPRESSION:-90});"
     echo "define('PNG_COMPRESSION', ${PNG_COMPRESSION:-6});"
     echo "define('ALT_FOLDER', '${ALT_FOLDER:-}');"
+    echo "define('S3_BUCKET', '${S3_BUCKET:-}');"
+    echo "define('S3_ACCESS_KEY', '${S3_ACCESS_KEY:-}');"
+    echo "define('S3_SECRET_KEY', '${S3_SECRET_KEY:-}');"
+    echo "define('S3_ENDPOINT', '${S3_ENDPOINT:-}');"
     if [[ "$(uname -m)" = "x86_64" ]]; then
         echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/share/nginx/html/bin/ffmpeg}');"
     else

@@ -28,6 +28,7 @@ RUN set -x \
         php7-ctype \
         php7-opcache \
         php7-mbstring \
+        php7-sodium \
         php7-session \
         php7-fileinfo \
         php7-pcntl \

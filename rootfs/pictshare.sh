@@ -45,6 +45,7 @@ _buildConfig() {
     echo "define('S3_ACCESS_KEY', '${S3_ACCESS_KEY:-}');"
     echo "define('S3_SECRET_KEY', '${S3_SECRET_KEY:-}');"
     echo "define('S3_ENDPOINT', '${S3_ENDPOINT:-}');"
+    echo "define('ENCRYPTION_KEY', '${ENCRYPTION_KEY:-}');"
     if [[ "$(uname -m)" = "x86_64" ]]; then
         echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/share/nginx/html/bin/ffmpeg}');"
     else

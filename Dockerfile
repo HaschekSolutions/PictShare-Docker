@@ -30,6 +30,7 @@ RUN set -x \
         php7-mbstring \
         php7-sodium \
         php7-xml \
+        php7-simplexml \
         php7-session \
         php7-fileinfo \
         php7-pcntl \

@@ -44,6 +44,11 @@ _buildConfig() {
     echo "define('JPEG_COMPRESSION', ${JPEG_COMPRESSION:-90});"
     echo "define('PNG_COMPRESSION', ${PNG_COMPRESSION:-6});"
     echo "define('ALT_FOLDER', '${ALT_FOLDER:-}');"
+    echo "define('S3_BUCKET', '${S3_BUCKET:-}');"
+    echo "define('S3_ACCESS_KEY', '${S3_ACCESS_KEY:-}');"
+    echo "define('S3_SECRET_KEY', '${S3_SECRET_KEY:-}');"
+    echo "define('S3_ENDPOINT', '${S3_ENDPOINT:-}');"
+    echo "define('ENCRYPTION_KEY', '${ENCRYPTION_KEY:-}');"
     if [[ "$(uname -m)" = "x86_64" ]]; then
         echo "define('FFMPEG_BINARY', '${FFMPEG_BINARY:-/usr/share/nginx/html/bin/ffmpeg}');"
     else
@@ -53,6 +58,9 @@ _buildConfig() {
 
 _main() {
     echo 'Setting up PictShare'
+
+    touch /usr/share/nginx/html/data/sha1.csv
+    chown nginx:nginx /usr/share/nginx/html/data/sha1.csv
 
     if [[ ${MAX_UPLOAD_SIZE:=100} =~ ^[0-9]+$ ]]; then
         _maxUploadSize
@@ -69,9 +77,6 @@ _main() {
     echo '[i] Done! Starting nginx'
 
     exec /init
-# use if run without S6
-#    exec php-fpm &
-#    exec nginx -g 'daemon off;'
 }
 
 if [[ $0 = $BASH_SOURCE ]]; then

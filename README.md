@@ -57,3 +57,8 @@ Every other variable can be referenced against the [default PictShare configurat
 - S3_SECRET_KEY (string | Secrety Key)
 - S3_ENDPOINT (url | If you are using a selfhosted version of S3 like Minio, put your URL here)
 - ENCRYPTION_KEY (string | If you want to use encryption for storage controllers, put your encryption key here. [Read more](https://github.com/HaschekSolutions/pictshare/blob/master/rtfm/ENCRYPTION.md))
+
+- FTP_SERVER (string | IP or hostname of your FTP Server )
+- FTP_USER (string | FTP Username)
+- FTP_PASS (string | FTP Password)
+- FTP_BASEDIR (string | Base path where files will be stored. Must end with / eg `/web/pictshare/`)

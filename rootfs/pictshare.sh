@@ -46,7 +46,7 @@ _buildConfig() {
     echo "define('S3_SECRET_KEY', '${S3_SECRET_KEY:-}');"
     echo "define('S3_ENDPOINT', '${S3_ENDPOINT:-}');"
     echo "define('FTP_SERVER', '${FTP_SERVER:-}');"
-    echo "define('FTP_PORT', '${FTP_PORT:-}');"
+    echo "define('FTP_PORT', ${FTP_PORT:-21});"
     echo "define('FTP_USER', '${FTP_USER:-}');"
     echo "define('FTP_PASS', '${FTP_PASS:-}');"
     echo "define('FTP_SSL', ${FTP_SSL:-false});"

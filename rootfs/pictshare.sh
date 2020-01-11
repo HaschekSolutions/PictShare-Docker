@@ -46,8 +46,10 @@ _buildConfig() {
     echo "define('S3_SECRET_KEY', '${S3_SECRET_KEY:-}');"
     echo "define('S3_ENDPOINT', '${S3_ENDPOINT:-}');"
     echo "define('FTP_SERVER', '${FTP_SERVER:-}');"
+    echo "define('FTP_PORT', '${FTP_PORT:-}');"
     echo "define('FTP_USER', '${FTP_USER:-}');"
     echo "define('FTP_PASS', '${FTP_PASS:-}');"
+    echo "define('FTP_SSL', ${FTP_SSL:-false});"
     echo "define('FTP_BASEDIR', '${FTP_BASEDIR:-}');"
     echo "define('ENCRYPTION_KEY', '${ENCRYPTION_KEY:-}');"
     if [[ "$(uname -m)" = "x86_64" ]]; then

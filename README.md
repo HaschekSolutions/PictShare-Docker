@@ -59,6 +59,8 @@ Every other variable can be referenced against the [default PictShare configurat
 - ENCRYPTION_KEY (string | If you want to use encryption for storage controllers, put your encryption key here. [Read more](https://github.com/HaschekSolutions/pictshare/blob/master/rtfm/ENCRYPTION.md))
 
 - FTP_SERVER (string | IP or hostname of your FTP Server )
+- FTP_PORT (int | Port of your FTP server (defaults to 21) )
+- FTP_SSL (true/false | If FTP server supports SSL-FTP (not sFTP, thats not the same!))
 - FTP_USER (string | FTP Username)
 - FTP_PASS (string | FTP Password)
 - FTP_BASEDIR (string | Base path where files will be stored. Must end with / eg `/web/pictshare/`)

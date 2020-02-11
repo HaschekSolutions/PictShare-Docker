@@ -41,11 +41,13 @@ RUN set -x \
 # all supported architectures look at "assets" on
 # https://github.com/just-containers/s6-overlay/releases
 RUN /bin/bash -c 'set -ex && \
-    ARCH="$(uname -m)" && \
+    ARCH="$(apk --print-arch)" && \
     case "${ARCH##*-}" in \
         x86_64) S6_PLATFORM="amd64" ;; \
         armv7l) S6_PLATFORM="armhf" ;; \
+	armv7) S6_PLATFORM="armhf" ;; \
         armv6) S6_PLATFORM="armhf" ;; \
+	armhf) S6_PLATFORM="armhf" ;; \
         arm) S6_PLATFORM="arm" ;; \
         aarch64) S6_PLATFORM="aarch64" ;;\
         i386) S6_PLATFORM="x86" ;;\

@@ -30,6 +30,7 @@ _buildConfig() {
     echo "<?php"
     echo "define('URL', '${URL:-}');"
     echo "define('TITLE', '${TITLE:-PictShare}');"
+    echo "define('CONTENTCONTROLLERS', '${CONTENTCONTROLLERS:-}');"
     echo "define('MASTER_DELETE_CODE', '${MASTER_DELETE_CODE:-}');"
     echo "define('MASTER_DELETE_IP', '${MASTER_DELETE_IP:-}');"
     echo "define('UPLOAD_FORM_LOCATION', '${UPLOAD_FORM_LOCATION:-}');"

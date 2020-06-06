@@ -64,3 +64,5 @@ Every other variable can be referenced against the [default PictShare configurat
 - FTP_USER (string | FTP Username)
 - FTP_PASS (string | FTP Password)
 - FTP_BASEDIR (string | Base path where files will be stored. Must end with / eg `/web/pictshare/`)
+
+- CONTENTCONTROLLERS (CSV string | If set, will whitelist content controllers for your instance. Must be uppercase and can be comma separated. Example: Only Pictures: `IMAGE`, Pictures and Videos: `IMAGE,VIDEO`)
